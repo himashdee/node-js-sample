@@ -9,7 +9,7 @@ endpoints:
     port: 3000
     # +required Type of the traffic this endpoint is accepting. Example: REST, GraphQL, etc.
     # Allowed values: REST, GraphQL, GRPC
-    type: TCP
+    type: RESR
     # +optional Network level visibility of this endpoint. Defaults to Project
     # Accepted values: Project|Organization|Public.
     networkVisibility: Public

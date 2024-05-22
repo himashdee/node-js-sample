@@ -1,7 +1,6 @@
 FROM nginx
 
 # Create a non-root user
-RUN addgroup -S choreo
 RUN adduser \
     --disabled-password \
     --gecos "" \
@@ -10,9 +9,9 @@ RUN adduser \
 
 # Create necessary directories with appropriate permissions
 RUN mkdir -p /var/cache/nginx/client_temp && \
-    chown -R choreo:choreo /var/cache/nginx && \
+    chown -R choreo /var/cache/nginx && \
     touch /var/run/nginx.pid && \
-    chown -R choreo:choreo /var/run/nginx.pid
+    chown -R choreo /var/run/nginx.pid
 
 EXPOSE 80
 

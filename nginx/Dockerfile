@@ -1,7 +1,12 @@
 FROM nginx
 
-# Create a non-root user "app"
-RUN addgroup -S choreo && adduser -S choreo -G choreo
+# Create a non-root user
+RUN addgroup -S choreo
+RUN adduser \
+    --disabled-password \
+    --gecos "" \
+    --uid 10014 \
+    "choreo"
 
 # Create necessary directories with appropriate permissions
 RUN mkdir -p /var/cache/nginx/client_temp && \
@@ -12,5 +17,5 @@ RUN mkdir -p /var/cache/nginx/client_temp && \
 EXPOSE 80
 
 # Switch to the non-root "choreo" user and execute the script and start nginx
-USER choreo
+USER 10014
 CMD /usr/sbin/nginx -g 'daemon off;'
